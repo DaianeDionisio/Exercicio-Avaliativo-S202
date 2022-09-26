@@ -85,15 +85,14 @@ class Crud:
         return res.modified_count
 
     #apaga o aluno da lista de acordo com a matricula
-    def delete_aluno(self, id: str, matAluno: int):
-
+    def delete_aluno(self, id: str, matAluno: str):
         res = self.collection.update_one(
             {"_id": ObjectId(id)}, {"$pull": {
                 "alunos": {
                     "matricula": matAluno
                 }
             }
-        })
+            })
         return res.modified_count
 
     #apaga a aula
